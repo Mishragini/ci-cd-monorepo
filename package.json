@@ -16,10 +16,11 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
+    "db:migrate": "cd packages/db && bunx prisma migrate dev && cd ../..",
     "db:generate": "cd packages/db && bunx prisma generate && cd ../..",
-    "start:web": "cd apps/web && bun run start",
-    "start:backend": "cd apps/backend && bun run start",
-    "start:websocket": "cd apps/websocket && bun run start"
+    "start:docs": "bun run db:migrate && bun run build && cd apps/docs && bun run start && cd ../..",
+    "start:backend": "cd apps/backend && bun run start && cd ../..",
+    "start:websocket": "cd apps/websocket && bun run start && cd ../.."
   },
   "workspaces": [
     "apps/*",
